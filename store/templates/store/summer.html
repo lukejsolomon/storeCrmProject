@@ -1,0 +1,29 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Summer</h1>
+    <div class="container">
+      <div class="row">
+        {% for i in summer %}
+      
+        <div class="col-sm-3">
+          <a href="{% url 'product' i.id %}">
+
+          <div class="card">
+            <img src="{{ i.image1.url }}" class="card-img-top" alt="...">
+         <div class="card-body">
+           <h5 class="card-title">{{ i.name }}</h5>
+           <span> {{ i.genderCategory }} {{ i.seasonCategory }}</span>
+           <p class="rtlPrcSl">Price: ${{ i.rtlPrice }}</p>
+           <p class="slPrc">Now Only: ${{ i.slPrice }}</p>
+           <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+           <a href="{% url 'product' i.id %}" class="btn btn-primary">Add to Cart</a>
+         </div>
+        </div>
+       </div></a>
+       {% endfor %}
+      </div>
+    </div>
+
+    {% endblock %}

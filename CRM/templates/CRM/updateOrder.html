@@ -1,0 +1,32 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    {% for i in address %}
+    <div class="col-lg-4">
+
+        <div class="box-element product">
+
+            <h6>Order Number:<strong>{{ i.order }}</strong></h6>
+            <hr>
+            {% for item in i.orderItem.all %}
+            <h6>Product Location:<strong>{{ item.product.location }}</strong></h6>
+            
+            <h6>Product:<strong>{{ item.product }}</strong></h6>
+            <hr>
+
+            {% endfor %}
+            Ship to:
+         <h6>{{ i.customer }}</h6>
+            <p>{{ i.address }}</p>
+            <p> {{ i.city }}</p>
+            <p> {{ i.state }}</p>
+            <p> {{ i.zipcode }}</p>
+            <a class="btn btn-sm btn-info" href="{% url 'updateOrder' i.id %}">Update</a>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}
