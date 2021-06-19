@@ -13,8 +13,8 @@ def orders(request):
     return render(request, 'crm/orders.html', context)
 
 def updateOrder(request, pk):
-    order = Order.objects.get(id=pk)
-    # item = OrderItem.objects.all()
-    # address = ShippingAddress.objects.all()
-    context = {'order':order}
+    address = ShippingAddress.objects.get(id=pk)
+
+    
+    context = {'address': address}
     return render(request, 'crm/updateOrder.html')
